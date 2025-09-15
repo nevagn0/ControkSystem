@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Control System API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .endpoints {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Control System API</h1>
+        <p>API успешно запущено и готово к работе!</p>
+
+        <div class="endpoints">
+            <h3>Доступные endpoints:</h3>
+            <div class="endpoint">
+                <strong>GET</strong> <a href="/weatherforecast">/weatherforecast</a> - Прогноз погоды
+            </div>
+            <div class="endpoint">
+                <strong>Swagger UI</strong> <a href="/swagger">/swagger</a> - Документация API
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">
+            <small>Текущее время: <span id="datetime"></span></small>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('datetime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
