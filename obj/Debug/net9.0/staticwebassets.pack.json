@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\ControkSystem\\ControkSystem\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ControkSystem.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ControkSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.ControkSystem.props",
+      "PackagePath": "build\\ControkSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.ControkSystem.props",
+      "PackagePath": "buildMultiTargeting\\ControkSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.ControkSystem.props",
+      "PackagePath": "buildTransitive\\ControkSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
