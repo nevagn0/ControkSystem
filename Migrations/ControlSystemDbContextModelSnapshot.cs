@@ -17,11 +17,111 @@ namespace ControkSystem.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.9")
+                .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "uuid-ossp");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ControkSystem.Model.Defects", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<string>("Comm")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("DeadLine")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<Guid>("IdProject")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("Pictures")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdProject");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Defects", (string)null);
+                });
+
+            modelBuilder.Entity("ControkSystem.Model.Projects", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("Progres")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects", (string)null);
+                });
+
+            modelBuilder.Entity("ControkSystem.Model.UserProject", b =>
+                {
+                    b.Property<Guid>("IdUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("IdProject")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("IdUser", "IdProject");
+
+                    b.HasIndex("IdProject");
+
+                    b.ToTable("UserProject", (string)null);
+                });
 
             modelBuilder.Entity("ControkSystem.Models.User", b =>
                 {
@@ -47,6 +147,56 @@ namespace ControkSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", (string)null);
+                });
+
+            modelBuilder.Entity("ControkSystem.Model.Defects", b =>
+                {
+                    b.HasOne("ControkSystem.Model.Projects", "Project")
+                        .WithMany("Defects")
+                        .HasForeignKey("IdProject")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ControkSystem.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ControkSystem.Model.UserProject", b =>
+                {
+                    b.HasOne("ControkSystem.Model.Projects", "Projects")
+                        .WithMany("UserProjects")
+                        .HasForeignKey("IdProject")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ControkSystem.Models.User", "User")
+                        .WithMany("UserProjects")
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projects");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ControkSystem.Model.Projects", b =>
+                {
+                    b.Navigation("Defects");
+
+                    b.Navigation("UserProjects");
+                });
+
+            modelBuilder.Entity("ControkSystem.Models.User", b =>
+                {
+                    b.Navigation("UserProjects");
                 });
 #pragma warning restore 612, 618
         }

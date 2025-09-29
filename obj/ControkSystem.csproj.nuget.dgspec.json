@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ControkSystem\\ControkSystem\\ControkSystem.csproj": {}
+    "D:\\ControkSystem\\ControkSystem.csproj": {}
   },
   "projects": {
-    "D:\\ControkSystem\\ControkSystem\\ControkSystem.csproj": {
+    "D:\\ControkSystem\\ControkSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ControkSystem\\ControkSystem\\ControkSystem.csproj",
+        "projectUniqueName": "D:\\ControkSystem\\ControkSystem.csproj",
         "projectName": "ControkSystem",
-        "projectPath": "D:\\ControkSystem\\ControkSystem\\ControkSystem.csproj",
-        "packagesPath": "C:\\Users\\Shind\\.nuget\\packages\\",
-        "outputPath": "D:\\ControkSystem\\ControkSystem\\obj\\",
+        "projectPath": "D:\\ControkSystem\\ControkSystem.csproj",
+        "packagesPath": "C:\\Users\\shind\\.nuget\\packages\\",
+        "outputPath": "D:\\ControkSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\visual componens\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Shind\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\shind\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -59,17 +52,21 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.9, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.9, )"
+              "version": "[6.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             }
           },
           "imports": [
@@ -91,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\shind\\.dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

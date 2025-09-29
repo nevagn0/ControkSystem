@@ -9,6 +9,8 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 Console.WriteLine(connectionString);
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ControlSystemDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -20,10 +22,13 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-// Добавьте это для обслуживания статических файлов
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "goida_swaga");
+    c.RoutePrefix = "swagger";
+});
 app.UseStaticFiles();
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
@@ -42,7 +47,7 @@ if (app.Environment.IsDevelopment())
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Ошибка при открытии браузера: {ex.Message}");
+        Console.WriteLine($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {ex.Message}");
     }
 }
 
