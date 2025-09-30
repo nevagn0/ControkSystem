@@ -1,9 +1,11 @@
-namespace ControkSystemm.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore.Internal;
+
+namespace ControkSystem.Infrastructure.Data;
 
 using System.Data.Common;
-using ControkSystemm.Domain.Model;
+using ControkSystem.Domain.Model;
 using Microsoft.EntityFrameworkCore;
-using ControkSystemm.Domain.Model;
+using ControkSystem.Domain.Model;
 
 public class ControlSystemDbContext : DbContext
 {
@@ -11,6 +13,10 @@ public class ControlSystemDbContext : DbContext
     {
 
     }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Projects> Projects { get; set; }
+    public DbSet<Defects> Defects { get; set; }
+    public DbSet<UserProject> UserProjects { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresExtension("uuid-ossp");

@@ -14,3 +14,5 @@ D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Inf
 D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\refint\ControkSystem.Infrastructure.dll
 D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.pdb
 D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ref\ControkSystem.Infrastructure.dll
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Application.dll
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Application.pdb

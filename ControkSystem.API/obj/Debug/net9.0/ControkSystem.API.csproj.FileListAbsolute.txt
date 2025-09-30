@@ -90,3 +90,7 @@ D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\refint\ControkSystem.API.dll
 D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\ControkSystem.API.pdb
 D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\ControkSystem.API.genruntimeconfig.cache
 D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\ref\ControkSystem.API.dll
+D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\DevOne.Security.Cryptography.BCrypt.dll
+D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\BCrypt.Net-Next.dll
+D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\ControkSystem.Application.dll
+D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\ControkSystem.Application.pdb

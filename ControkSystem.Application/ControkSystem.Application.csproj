@@ -7,10 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <ProjectReference Include="..\ControkSystem.Domain\ControkSystem.Domain.csproj" />
     </ItemGroup>
 
 </Project>

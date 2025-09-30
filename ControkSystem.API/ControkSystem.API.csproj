@@ -14,10 +14,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controller\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ControkSystem.Domain\ControkSystem.Domain.csproj" />
       <ProjectReference Include="..\ControkSystem.Infrastructure\ControkSystem.Infrastructure.csproj" />
     </ItemGroup>

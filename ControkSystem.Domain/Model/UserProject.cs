@@ -1,5 +1,5 @@
-using ControkSystemm.Domain.Model;
-namespace ControkSystemm.Domain.Model;
+using ControkSystem.Domain.Model;
+namespace ControkSystem.Domain.Model;
 
 public class UserProject
 {

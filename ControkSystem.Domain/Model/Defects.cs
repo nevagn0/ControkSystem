@@ -1,6 +1,6 @@
-using ControkSystemm.Domain.Model;
+using ControkSystem.Domain.Model;
 
-namespace ControkSystemm.Domain.Model;
+namespace ControkSystem.Domain.Model;
 
 public class Defects
 {
