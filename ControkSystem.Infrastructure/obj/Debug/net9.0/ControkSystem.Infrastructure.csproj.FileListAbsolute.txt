@@ -1,0 +1,16 @@
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Infrastructure.deps.json
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Infrastructure.dll
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Infrastructure.pdb
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Domain.dll
+D:\ControkSystem\ControkSystem.Infrastructure\bin\Debug\net9.0\ControkSystem.Domain.pdb
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.csproj.AssemblyReference.cache
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.AssemblyInfoInputs.cache
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.AssemblyInfo.cs
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.csproj.CoreCompileInputs.cache
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.sourcelink.json
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkS.E511F52D.Up2Date
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.dll
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\refint\ControkSystem.Infrastructure.dll
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ControkSystem.Infrastructure.pdb
+D:\ControkSystem\ControkSystem.Infrastructure\obj\Debug\net9.0\ref\ControkSystem.Infrastructure.dll

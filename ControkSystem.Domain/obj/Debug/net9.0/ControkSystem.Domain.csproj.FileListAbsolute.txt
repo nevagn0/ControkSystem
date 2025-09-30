@@ -1,0 +1,13 @@
+D:\ControkSystem\ControkSystem.Domain\bin\Debug\net9.0\ControkSystem.Domain.deps.json
+D:\ControkSystem\ControkSystem.Domain\bin\Debug\net9.0\ControkSystem.Domain.dll
+D:\ControkSystem\ControkSystem.Domain\bin\Debug\net9.0\ControkSystem.Domain.pdb
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.csproj.AssemblyReference.cache
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.AssemblyInfoInputs.cache
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.AssemblyInfo.cs
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.csproj.CoreCompileInputs.cache
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.sourcelink.json
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.dll
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\refint\ControkSystem.Domain.dll
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ControkSystem.Domain.pdb
+D:\ControkSystem\ControkSystem.Domain\obj\Debug\net9.0\ref\ControkSystem.Domain.dll

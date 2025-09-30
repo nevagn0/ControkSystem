@@ -1,2 +1,0 @@
-D:\ControkSystem\ControkSystem\wwwroot\index.html
-wwwroot\index.html

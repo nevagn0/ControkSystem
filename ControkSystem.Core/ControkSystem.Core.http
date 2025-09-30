@@ -1,0 +1,6 @@
+@ControkSystem.Core_HostAddress = http://localhost:5089
+
+GET {{ControkSystem.Core_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

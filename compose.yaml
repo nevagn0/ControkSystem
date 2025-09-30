@@ -1,0 +1,14 @@
+﻿services:
+  database: 
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: GOIDA
+      POSTGRES_USER: my_user
+      POSTGRES_DB: my_db
+    volumes:
+      - main:/var/lib/postgresql/data
+    ports:
+      - "5438:5432"
+volumes:
+  main:
