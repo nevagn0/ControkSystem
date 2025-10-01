@@ -34,4 +34,43 @@ public class UserServices
     {
         return BCrypt.Net.BCrypt.HashPassword(password);
     }
+
+    public async Task<UserDto> GetUserById(Guid id)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+        if (user == null)
+        {
+            return null;
+        }
+
+        return new UserDto
+        {
+            Id = user.Id,
+            Login = user.Login,
+            Type = user.Type
+        };
+    }
+
+    public async Task<bool> DeleteUserById(Guid id)
+    {
+        var user = await _userRepository.ExistsAsync(id);
+        if (!user)
+        {
+            return false;
+        }
+
+        await _userRepository.DeleteAsync(id);
+        return true;
+    }
+
+    public async Task<IEnumerable<UserDto>> GetAllAsync()
+    {
+        var user =await  _userRepository.GetAllAsync();
+        return user.Select(user => new UserDto
+        {
+            Id = user.Id,
+            Login = user.Login,
+            Type = user.Type
+        });
+    }
 }

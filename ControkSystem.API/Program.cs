@@ -4,64 +4,82 @@ using ControkSystem.Application.Services;
 using ControkSystem.Domain.Interfaces.Repositories;
 using ControkSystem.Infrastructure.Repositories;
 using System.Diagnostics;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 Console.WriteLine(connectionString);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "Control System API", 
+        Version = "v1"
+    });
+});
 
-// Database
 builder.Services.AddDbContext<ControlSystemDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register services and repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserServices>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors("AllowAll");
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Control System API");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Control System API v1");
         c.RoutePrefix = "swagger";
     });
 }
 
 app.UseStaticFiles();
+app.UseRouting();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// Запускаем приложение
-var appTask = app.RunAsync();
-
-// Даем время на запуск и открываем браузер
-if (app.Environment.IsDevelopment())
+try
 {
-    await Task.Delay(2000);
-    
-    try
+    _ = Task.Run(async () =>
     {
-        Process.Start(new ProcessStartInfo
+        try
         {
-            FileName = "http://localhost:5115/index.html",
-            UseShellExecute = true
-        });
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Не удалось открыть браузер: {ex.Message}");
-    }
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "http://localhost:5115/swagger",
+                UseShellExecute = true
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Не удалось открыть браузер: {ex.Message}");
+        }
+    });
+
+    await app.RunAsync();
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Application error: {ex.Message}");
 }

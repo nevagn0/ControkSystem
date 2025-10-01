@@ -5,7 +5,6 @@ namespace ControkSystem.Domain.Interfaces.Repositories;
 public interface IUserRepository
 {
     Task<User?> GetByIdAsync(Guid id);
-    Task<User?> GetByLoginAsync(string login);
     Task<IEnumerable<User>> GetAllAsync();
     Task AddAsync(User user);
     Task UpdateAsync(User user);
