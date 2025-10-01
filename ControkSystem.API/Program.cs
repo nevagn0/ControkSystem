@@ -38,7 +38,8 @@ builder.Services.AddDbContext<ControlSystemDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserServices>();
-
+builder.Services.AddScoped<IDefectRepository, DefectRepository>();
+builder.Services.AddScoped<DefectServices>();
 var app = builder.Build();
 
 app.UseCors("AllowAll");

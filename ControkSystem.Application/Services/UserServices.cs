@@ -38,10 +38,6 @@ public class UserServices
     public async Task<UserDto> GetUserById(Guid id)
     {
         var user = await _userRepository.GetByIdAsync(id);
-        if (user == null)
-        {
-            return null;
-        }
 
         return new UserDto
         {
