@@ -22,7 +22,7 @@ public class DefectServices
             Pictures = dto.Pictures,
             Status = dto.Status,
             Comm = dto.Comm,
-            IdProject = dto.IdProject,
+            ProjectId = dto.ProjectId,
             UserId = dto.UserId,
         };
         await _defectRepository.AddAsync(defect);
@@ -37,7 +37,7 @@ public class DefectServices
             Pictures = defect.Pictures,
             Status = defect.Status,
             Comm = defect.Comm,
-            IdProject = defect.IdProject,
+            ProjectId = defect.ProjectId,
             UserId = defect.UserId,
         };
     }
@@ -54,7 +54,9 @@ public class DefectServices
             DeadLine = defect.DeadLine,
             Pictures = defect.Pictures,
             Status = defect.Status,
-            Comm = defect.Comm
+            Comm = defect.Comm,
+            ProjectId = defect.ProjectId,
+            UserId = defect.UserId,
         };
     }
 

@@ -32,15 +32,15 @@ public class DefectController : ControllerBase
         }
         return Ok(defect);
     }
-
-    [HttpDelete]
-    public async Task<ActionResult<List<DefectDto>>> DeleteAsync(Guid id)
+    
+    [HttpDelete("{id}")] 
+    public async Task<IActionResult> DeleteDefect(Guid id) 
     {
-        var defect = await _defectServices.DeleteDefectAsync(id);
-        if (!defect)
+        var deleted = await _defectServices.DeleteDefectAsync(id);
+        if (!deleted)
         {
-            return NotFound();
+            return NotFound($"Не найден");
         }
-        return NoContent();
+        return NoContent(); 
     }
 }

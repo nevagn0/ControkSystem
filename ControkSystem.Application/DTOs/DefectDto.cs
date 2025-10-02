@@ -10,7 +10,7 @@ public class DefectDto
     public string Pictures { get; set; } = null!;
     public string Status { get; set; } = null!;
     public string Comm { get; set; }= null!;
-    public Guid IdProject { get; set; }
+    public Guid ProjectId { get; set; }
     public Guid UserId { get; set; }
     
 }
@@ -24,7 +24,7 @@ public class CreateDefectDto
     public string Pictures { get; set; } = null!;
     public string Status { get; set; } = null!;
     
-    public Guid IdProject { get; set; }
+    public Guid ProjectId { get; set; }
     public Guid UserId { get; set; }
     
     public string Comm { get; set; }= null!;

@@ -30,7 +30,7 @@ public class DefectRepository : IDefectRepository
         if (defects != null)
         {
             _context.Defects.Remove(defects);
-            _context.SaveChangesAsync();
+           await _context.SaveChangesAsync();
         }
     }
 
@@ -39,14 +39,10 @@ public class DefectRepository : IDefectRepository
         _context.Defects.Update(defects);
         await _context.SaveChangesAsync();
     }
-
-    public Task<bool> ExistsAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     public async Task<bool> ExistsDefectAsync(Guid id)
     {
-        return await _context.Users.AnyAsync(u => u.Id == id);
+        return await _context.Defects.AnyAsync(u => u.Id == id);
     }
 }

@@ -32,4 +32,16 @@ public class ProjectController : ControllerBase
         }
         return Ok(project);
     }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult> DeleteProject(Guid id)
+    {
+        var project = await _projectServices.DeleteProjectAsync(id);
+        if (project == null)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

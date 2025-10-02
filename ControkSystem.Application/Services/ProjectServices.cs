@@ -41,4 +41,13 @@ public class ProjectServices
             Progres = project.Progres
         };
     }
+
+    public async Task<bool> DeleteProjectAsync(Guid id)
+    {
+        var defect = await _projectRepository.ExistsAsync(id);
+        if (!defect)
+            return false;
+        await _projectRepository.DeleteAsync(id);
+        return true;
+    }
 }

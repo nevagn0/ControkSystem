@@ -77,7 +77,7 @@ public class ControlSystemDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.HasOne(e => e.Project)
                 .WithMany(p => p.Defects)
-                .HasForeignKey(e => e.IdProject)
+                .HasForeignKey(e => e.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("uuid_generate_v4()")

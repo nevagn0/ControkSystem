@@ -12,7 +12,7 @@ public class ProjectRepository : IProjectrepository
         _context = context;
     }
 
-    public async Task <Projects?> GetByIdAsync(Guid id)
+    public async Task<Projects?> GetByIdAsync(Guid id)
     {
         return await _context.Projects.FindAsync(id);
     }
@@ -36,11 +36,16 @@ public class ProjectRepository : IProjectrepository
 
     public async Task DeleteAsync(Guid id)
     {
-        _context.Projects.Remove(await _context.Projects.FindAsync(id));
+        var project = await GetByIdAsync(id);
+        if (project != null)
+        {
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task<bool> ExistsAsync(Guid id)
+    public async Task<bool> ExistsAsync(Guid id)
     {
-        throw new NotImplementedException();
+        return await _context.Projects.AnyAsync(p => p.Id == id);
     }
 }
