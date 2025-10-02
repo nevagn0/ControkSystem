@@ -37,7 +37,7 @@ public class DefectRepository : IDefectRepository
     public async Task UpdateDefect(Defects defects)
     {
         _context.Defects.Update(defects);
-        _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
     }
 
     public Task<bool> ExistsAsync(Guid id)

@@ -40,6 +40,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<IDefectRepository, DefectRepository>();
 builder.Services.AddScoped<DefectServices>();
+builder.Services.AddScoped<IProjectrepository, ProjectRepository>();
+builder.Services.AddScoped<ProjectServices>();
 var app = builder.Build();
 
 app.UseCors("AllowAll");

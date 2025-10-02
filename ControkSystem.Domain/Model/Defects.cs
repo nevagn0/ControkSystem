@@ -8,6 +8,7 @@ public class Defects
     public string Name { get; set; } = null!;
     public string Title { get; set; } = null!;
     public string Priority { get; set; } = null!;
+    public Guid UserId { get; set; }
     public virtual User User { get; set;} = null!;
     public string DeadLine { get; set; } = null!;
     public Guid IdProject { get; set; }

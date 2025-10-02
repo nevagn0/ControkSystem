@@ -1,0 +1,35 @@
+using Microsoft.AspNetCore.Mvc;
+using ControkSystem.Application.DTOs;
+using ControkSystem.Application.Services;
+
+namespace ControkSystem.API.Controller;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProjectController : ControllerBase
+{
+    private readonly ProjectServices _projectServices;
+
+    public ProjectController(ProjectServices projectServices)
+    {
+        _projectServices = projectServices;
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ProjectDto>> CreateProject(ProjectCreateDto dto)
+    {
+        var project = await _projectServices.CreateProjectAsync(dto);
+        return Ok(project);
+    }
+    
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<List<ProjectDto>>> GetProjects(Guid id)
+    {
+        var project = await _projectServices.GetByIdASync(id);
+        if (project == null)
+        {
+            return NotFound();
+        }
+        return Ok(project);
+    }
+}
