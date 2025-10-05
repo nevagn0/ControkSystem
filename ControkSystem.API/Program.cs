@@ -42,12 +42,14 @@ builder.Services.AddScoped<IDefectRepository, DefectRepository>();
 builder.Services.AddScoped<DefectServices>();
 builder.Services.AddScoped<IProjectrepository, ProjectRepository>();
 builder.Services.AddScoped<ProjectServices>();
+builder.Services.AddScoped<IUserProjectRepository, UserProjectRepository>();
+builder.Services.AddScoped<UserProjectService>();
 var app = builder.Build();
 
 app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
-{
+{   
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
