@@ -44,7 +44,11 @@ public class UserRepository : IUserRepository
             await _context.SaveChangesAsync();
         }
     }
-    
+
+    public async Task<User?> GetByLoginAsync(string login)
+    {
+        return await _context.Users.FirstOrDefaultAsync(g => g.Login == login);
+    }
     public async Task<bool> ExistsAsync(Guid id)
     {
         return await _context.Users.AnyAsync(u => u.Id == id);

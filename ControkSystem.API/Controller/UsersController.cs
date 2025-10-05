@@ -9,17 +9,48 @@ using ControkSystem.Application.Services;
 public class UsersController : ControllerBase
 {
     private readonly UserServices _userServices;
+    private readonly AuthService _authService;
 
-    public UsersController(UserServices userServices)
+    public UsersController(UserServices userServices,AuthService authService)
     {
+        _authService = authService;
         _userServices = userServices;
     }
-
-    [HttpPost]
-    public async Task<ActionResult<UserDto>> CreateUser(CreateUserDto userdto)
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var user = await _userServices.CreateUserAsync(userdto);
-        return Ok(user);
+        try
+        {
+           var result = await _authService.LoginAsync(request);
+           
+           HttpContext.Response.Cookies.Append("access_token", result.Token, new CookieOptions
+           {
+               Expires = result.Expires,
+               HttpOnly = false,
+               IsEssential = true,
+               Secure = true,
+               SameSite = SameSiteMode.None
+           });
+           
+           return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return Unauthorized(new { error = ex.Message });
+        }
+    }
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] CreateUserDto userDto)
+    {
+        try
+        {
+            var result = await _userServices.CreateUserAsync(userDto);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 
     [HttpGet("{id:guid}")]
@@ -48,5 +79,18 @@ public class UsersController : ControllerBase
     {
         var users = await _userServices.GetAllAsync();
         return Ok(users);
+    }
+    [HttpGet("check-cookies")]
+    public IActionResult CheckCookies()
+    {
+        var cookies = Request.Cookies.Keys.ToDictionary(
+            key => key, 
+            key => Request.Cookies[key] ?? "null"
+        );
+    
+        return Ok(new { 
+            cookies = cookies,
+            headers = Request.Headers.ToDictionary(h => h.Key, h => h.Value.ToString())
+        });
     }
 }

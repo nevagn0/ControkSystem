@@ -47,6 +47,22 @@ public class UserServices
         };
     }
 
+    public async Task<UserDto?> GetUserByLoginAsync(string login)
+    {
+        var user = await _userRepository.GetByLoginAsync(login);
+        if (user == null)
+        {
+            return null;
+        }
+
+        return new UserDto
+        {
+            Id = user.Id,
+            Login = user.Login,
+            Type = user.Type
+        };
+    }
+    
     public async Task<bool> DeleteUserById(Guid id)
     {
         var user = await _userRepository.ExistsAsync(id);
@@ -68,5 +84,19 @@ public class UserServices
             Login = user.Login,
             Type = user.Type
         });
+    }
+
+    public async Task<UserDto> LoginAsync(string login)
+    {
+        var user = await _userRepository.GetByLoginAsync(login);
+        if (user == null)
+            return null;
+        
+        return new UserDto
+        {
+            Id = user.Id,
+            Login = user.Login,
+            Type = user.Type
+        };
     }
 }
