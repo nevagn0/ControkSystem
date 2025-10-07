@@ -40,7 +40,7 @@ public class UsersController : ControllerBase
         }
     }
     [HttpPost("register")]
-    public async Task<ActionResult> Register([FromBody] RegisterRequest request)
+    public async Task<ActionResult> Register(RegisterRequest request)
     {
         try
         {

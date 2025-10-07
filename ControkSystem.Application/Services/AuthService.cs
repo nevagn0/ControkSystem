@@ -29,7 +29,6 @@ namespace ControkSystem.Application.Services
             public const string Engineer = "Инженер";
             public const string Manager = "Менеджер";
             public const string Observer = "Наблюдатель";
-            public const string Worker = "Рабочий";
         }
         
         public AuthService(IUserRepository userRepository, IConfiguration configuration, ILogger<AuthService> logger, IHttpContextAccessor httpContextAccessor)
@@ -46,7 +45,7 @@ namespace ControkSystem.Application.Services
             if (existingUser != null)
                 throw new ArgumentException("Пользователь с таким логином уже существует");
             
-            var RoleUser = new[] {UserTypes.Engineer, UserTypes.Manager, UserTypes.Observer, UserTypes.Worker};
+            var RoleUser = new[] {UserTypes.Engineer, UserTypes.Manager, UserTypes.Observer};
             if (!RoleUser.Contains(request.Type))
                 throw new ArgumentException($"Недопустимая роль '{request.Type}'. Допустимые роли: {string.Join(", ", RoleUser)}");
             

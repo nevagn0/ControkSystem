@@ -1,0 +1,142 @@
+
+:root {
+    --black-primary: #1c1c1c;
+    --black-secondary: #2e2e2e;
+    --black-light: #4f4f4f;
+    --black-dark: #000000;
+    --white: #ffffff;
+    --gray-light: #f0f0f0;
+}
+
+.registration-page {
+    background: linear-gradient(135deg, #f4f4f4 0%, #ffffff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.registration-container {
+    background: white;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid var(--black-dark);
+}
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.registration-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black-dark);
+    margin-bottom: 1rem;
+}
+
+.registration-subtitle {
+    font-size: 1.1rem;
+    color: var(--black-light);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--black-light);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--black-primary);
+    box-shadow: 0 0 0 3px rgba(28, 28, 28, 0.1);
+    outline: none;
+}
+
+.validation-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--black-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-register:hover {
+    background-color: var(--black-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--black-light);
+}
+
+.login-link a {
+    color: var(--black-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--black-light);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    color: var(--black-primary);
+    transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+    .registration-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .registration-title {
+        font-size: 2rem;
+    }
+}

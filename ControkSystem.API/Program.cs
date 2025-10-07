@@ -105,7 +105,7 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole("Менеджер"));
     
     options.AddPolicy("WorkOnProject", policy =>
-        policy.RequireRole("Менеджер", "Рабочий"));
+        policy.RequireRole("Менеджер"));
         
     options.AddPolicy("ManageUsers", policy =>
         policy.RequireRole("Менеджер"));

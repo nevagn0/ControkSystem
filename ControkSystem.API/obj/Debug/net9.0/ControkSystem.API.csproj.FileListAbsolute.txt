@@ -177,3 +177,5 @@ D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Wo
 D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\ControkSystem\ControkSystem.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\compressed\iqa7zzr33o-8ccfr7fxn2.gz
+D:\ControkSystem\ControkSystem.API\obj\Debug\net9.0\compressed\julss0lmrh-gpflzliw8d.gz

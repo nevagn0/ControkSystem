@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControkSystem.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f5f04fd4cf98a4157e11a278e888ee6c24162a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14cb24a3636565eecfe66964e6244c04ddd9e423")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControkSystem.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControkSystem.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
