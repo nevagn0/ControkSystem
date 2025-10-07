@@ -99,7 +99,20 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CreateProject", policy => 
+        policy.RequireRole("Менеджер"));
+    
+    options.AddPolicy("WorkOnProject", policy =>
+        policy.RequireRole("Менеджер", "Рабочий"));
+        
+    options.AddPolicy("ManageUsers", policy =>
+        policy.RequireRole("Менеджер"));
+        
+    options.AddPolicy("AddUsersToProject", policy =>
+        policy.RequireRole("Менеджер"));
+});
 builder.Services.AddDbContext<ControlSystemDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHttpContextAccessor(); 

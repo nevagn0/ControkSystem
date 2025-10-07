@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ControkSystem.Application.Services;
 using ControkSystem.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControkSystem.API.Controllers
 {
@@ -16,6 +17,7 @@ namespace ControkSystem.API.Controllers
         }
 
         [HttpPost("add-user")]
+        [Authorize(Policy = "AddUsersToProject")] 
         public async Task<IActionResult> AddUserToProject([FromBody] AddUserToProjectRequest request)
         {
             try

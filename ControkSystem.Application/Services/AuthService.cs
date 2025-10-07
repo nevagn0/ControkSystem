@@ -13,10 +13,10 @@ namespace ControkSystem.Application.Services
 {
     public interface IAuthService
     {
-        Task<AuthResponse> RegisterAsync(RegisterRequest request);
+        Task RegisterAsync(RegisterRequest request);
         Task<AuthResponse> LoginAsync(LoginRequest request);
     }
-
+    
     public class AuthService : IAuthService
     {
         private readonly IUserRepository _userRepository;
@@ -24,7 +24,14 @@ namespace ControkSystem.Application.Services
         private readonly ILogger<AuthService> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         
-
+        private static class UserTypes
+        {
+            public const string Engineer = "инженер";
+            public const string Manager = "Менеджер";
+            public const string Observer = "Наблюдатель";
+            public const string Worker = "Рабочий";
+        }
+        
         public AuthService(IUserRepository userRepository, IConfiguration configuration, ILogger<AuthService> logger, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
@@ -33,14 +40,15 @@ namespace ControkSystem.Application.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
+        public async Task RegisterAsync(RegisterRequest request)
         {
             var existingUser = await _userRepository.GetByLoginAsync(request.Login);
             if (existingUser != null)
                 throw new ArgumentException("Пользователь с таким логином уже существует");
-
-            if (request.Password != request.ConfirmPassword)
-                throw new ArgumentException("Пароли не совпадают");
+            
+            var RoleUser = new[] {UserTypes.Engineer, UserTypes.Manager, UserTypes.Observer, UserTypes.Worker};
+            if (!RoleUser.Contains(request.Type))
+                throw new ArgumentException($"Недопустимая роль '{request.Type}'. Допустимые роли: {string.Join(", ", RoleUser)}");
             
             var user = new User(
                 request.Login,
@@ -49,7 +57,6 @@ namespace ControkSystem.Application.Services
             );
 
             await _userRepository.AddAsync(user);
-            return GenerateJwtToken(user);
         }
 
         public async Task<AuthResponse> LoginAsync(LoginRequest request)
@@ -76,6 +83,7 @@ namespace ControkSystem.Application.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Login),
                 new Claim("Type", user.Type),
+                new Claim(ClaimTypes.Role, user.Type),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

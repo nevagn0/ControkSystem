@@ -40,12 +40,12 @@ public class UsersController : ControllerBase
         }
     }
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] CreateUserDto userDto)
+    public async Task<ActionResult> Register([FromBody] RegisterRequest request)
     {
         try
         {
-            var result = await _userServices.CreateUserAsync(userDto);
-            return Ok(result);
+            await _authService.RegisterAsync(request);
+            return Ok();
         }
         catch (Exception ex)
         {
