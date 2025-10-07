@@ -28,6 +28,11 @@ public class ProjectRepository : IProjectrepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task? UpdateASync(Projects project)
+    {
+        _context.Projects.Update(project);
+        await _context.SaveChangesAsync();
+    }
     public async Task UpdateAsync(Projects project)
     { 
         _context.Projects.Update(project);

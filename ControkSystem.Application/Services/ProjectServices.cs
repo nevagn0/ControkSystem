@@ -50,4 +50,22 @@ public class ProjectServices
         await _projectRepository.DeleteAsync(id);
         return true;
     }
+
+    public async Task<ProjectDto> UpdateASync(Guid id, Updateproject dto)
+    {
+        var UpProg = await _projectRepository.GetByIdAsync(id);
+        
+        UpProg.Name = dto.Name;
+        UpProg.Progres = dto.Progres;
+        await _projectRepository.UpdateAsync(UpProg);
+
+        return new ProjectDto
+        {
+            Id = UpProg.Id,
+            Name = UpProg.Name,
+            CreatedAt = UpProg.CreatedAt,
+            Progres = UpProg.Progres
+        };
+        
+    }
 }

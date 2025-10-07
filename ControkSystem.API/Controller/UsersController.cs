@@ -45,7 +45,10 @@ public class UsersController : ControllerBase
         try
         {
             await _authService.RegisterAsync(request);
-            return Ok();
+            return Ok(new
+            {
+                message = "Успешный вход"
+            });
         }
         catch (Exception ex)
         {
@@ -92,5 +95,31 @@ public class UsersController : ControllerBase
             cookies = cookies,
             headers = Request.Headers.ToDictionary(h => h.Key, h => h.Value.ToString())
         });
+    }
+    
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        try
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = false,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Path = "/",
+                Expires = DateTime.UtcNow.AddYears(-1)
+            };
+
+            Response.Cookies.Append("access_token", "", cookieOptions);
+                
+            return Ok(new { 
+                message = "Успешный выход"
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 }

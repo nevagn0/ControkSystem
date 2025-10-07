@@ -16,3 +16,8 @@ public class ProjectCreateDto
     public ICollection<DefectDto> Defects { get; set; } = null!;
     
 }
+public class Updateproject
+{
+    public string Name { get; set; } = null!;
+    public string Progres { get; set; } = null!;
+}

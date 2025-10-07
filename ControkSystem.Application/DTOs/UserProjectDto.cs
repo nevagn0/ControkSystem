@@ -30,6 +30,7 @@ namespace ControkSystem.Application.DTOs
     public class ProjectUsersResponse
     {
         public Guid ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public List<UserInfoDto> Users { get; set; } = new();
     }
 
@@ -44,5 +45,7 @@ namespace ControkSystem.Application.DTOs
     public class UserInfoDto
     {
         public Guid Id { get; set; }
+        public string Type { get; set; }
+        public string Login { get; set; }
     }
 }

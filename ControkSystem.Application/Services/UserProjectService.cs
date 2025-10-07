@@ -79,20 +79,32 @@ public class UserProjectService
     {
         var project = await _projectRepository.GetByIdAsync(projectId);
         if (project == null)
-            throw new ArgumentException($"Проект с {projectId} не найден");
-
+            throw new ArgumentException($"Проект с ID {projectId} не найден");
+        
         var projectUsers = await _userProjectRepository.GetByProjectIdAsync(projectId);
         
-        var users = (await Task.WhenAll(
-            projectUsers.Select(pu => _userRepository.GetByIdAsync(pu.IdUser))
-        )).Where(u => u != null).ToList();
+        var userIds = projectUsers.Select(pu => pu.IdUser).ToList();
+    
+
+        var users = new List<User>();
+        foreach (var userId in userIds)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user != null)
+            {
+                users.Add(user);
+            }
+        }
 
         return new ProjectUsersResponse
         {
             ProjectId = project.Id,
+            ProjectName = project.Name,
             Users = users.Select(u => new UserInfoDto
             {
-                Id = u.Id
+                Id = u.Id,
+                Login = u.Login,
+                Type = u.Type
             }).ToList()
         };
     }

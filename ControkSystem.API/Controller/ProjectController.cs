@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ControkSystem.Application.DTOs;
 using ControkSystem.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControkSystem.API.Controller;
 
@@ -43,5 +44,28 @@ public class ProjectController : ControllerBase
         }
 
         return NoContent();
+    }
+
+    [HttpPut("{id:guid}")]
+    [Authorize(Policy = "AddUsersToProject")] 
+    public async Task<IActionResult> UpdateProject(Guid id, [FromBody] Updateproject updateDto)
+    {
+        try
+        {
+            var result = await _projectServices.UpdateASync(id, updateDto);
+            return Ok(new
+            {
+                message = "Проект успешно обновлен",
+                project = result
+            });
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 }
