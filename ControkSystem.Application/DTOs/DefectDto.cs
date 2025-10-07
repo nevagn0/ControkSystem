@@ -29,3 +29,10 @@ public class CreateDefectDto
     
     public string Comm { get; set; }= null!;
 }
+
+public class UpdateDefectDto
+{
+    public string Status { get; set; } = null!;
+    public string Comm { get; set; } = null!;
+    public string Pictures { get; set; } = null!;
+}

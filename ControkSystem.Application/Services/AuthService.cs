@@ -26,7 +26,7 @@ namespace ControkSystem.Application.Services
         
         private static class UserTypes
         {
-            public const string Engineer = "инженер";
+            public const string Engineer = "Инженер";
             public const string Manager = "Менеджер";
             public const string Observer = "Наблюдатель";
             public const string Worker = "Рабочий";

@@ -46,7 +46,7 @@ public class ProjectController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut("{id:guid}")]
+    [HttpPatch("{id:guid}")]
     [Authorize(Policy = "AddUsersToProject")] 
     public async Task<IActionResult> UpdateProject(Guid id, [FromBody] Updateproject updateDto)
     {

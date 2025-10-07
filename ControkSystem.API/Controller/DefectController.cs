@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControkSystem.API.Controller;
@@ -32,6 +33,30 @@ public class DefectController : ControllerBase
         }
         return Ok(defect);
     }
+
+    [HttpPatch]
+    [Authorize(Policy = "UpdateDefect")]
+    public async Task<ActionResult<DefectDto>> UpdateAsync(Guid id, UpdateDefectDto defectDto)
+    {
+        try
+        {
+            var defect = await _defectServices.UpdateDefect(id, defectDto);
+            return Ok(new
+            {
+                messege = "Успешно добавлен",
+                UpDef = defect
+            });
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+    
     
     [HttpDelete("{id}")] 
     public async Task<IActionResult> DeleteDefect(Guid id) 

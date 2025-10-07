@@ -112,6 +112,7 @@ builder.Services.AddAuthorization(options =>
         
     options.AddPolicy("AddUsersToProject", policy =>
         policy.RequireRole("Менеджер"));
+    options.AddPolicy("UpdateDefect",policy => policy.RequireRole("Рабочий","Менеджер"));
 });
 builder.Services.AddDbContext<ControlSystemDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

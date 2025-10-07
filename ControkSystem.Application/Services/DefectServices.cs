@@ -68,4 +68,30 @@ public class DefectServices
         await _defectRepository.DeleteAsync(id);
         return true;
     }
+
+    public async Task<DefectDto> UpdateDefect(Guid id, UpdateDefectDto dto)
+    {
+        var UpDef = await _defectRepository.GetDefectById(id);
+        if (UpDef == null)
+        {
+            throw new ArgumentException($"Дефект {id} не найден");
+        }
+        UpDef.Status = dto.Status;
+        UpDef.Comm = dto.Comm;
+        await _defectRepository.UpdateDefect(UpDef);
+        return new DefectDto
+        {
+            Id = UpDef.Id,
+            Name = UpDef.Name,
+            Title = UpDef.Title,
+            Priority = UpDef.Priority,
+            DeadLine = UpDef.DeadLine,
+            Pictures = UpDef.Pictures,
+            Status = UpDef.Status,
+            Comm = UpDef.Comm,
+            ProjectId = UpDef.ProjectId,
+            UserId = UpDef.UserId,
+        };
+        
+    }
 }
