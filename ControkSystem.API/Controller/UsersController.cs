@@ -17,7 +17,7 @@ public class UsersController : ControllerBase
         _userServices = userServices;
     }
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    public async Task<IActionResult> Login( LoginRequest request)
     {
         try
         {
@@ -32,7 +32,12 @@ public class UsersController : ControllerBase
                SameSite = SameSiteMode.None
            });
            
-           return NoContent();
+           return Ok(new
+           {
+               message = "Успешный вход",
+               token = result.Token,
+               user = result.User
+           });
         }
         catch (Exception ex)
         {
